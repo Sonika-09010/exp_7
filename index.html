@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Brielle & Robert - Wedding Invitation</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<style>
+*{
+    box-sizing:border-box;
+    margin:0;
+    padding:0;
+}
+body{
+    font-family:Georgia,serif;
+    background:#f6e9e3;
+    color:#5c4038;
+    text-align:center;
+}
+.card{
+    width:85%;
+    max-width:900px;
+    margin:40px auto;
+    padding:45px 30px;
+    background:#fffaf7;
+    border:2px solid #d5ad9a;
+    border-radius:25px;
+    box-shadow:0 8px 25px #cbb5ac;
+}
+.decor{
+    font-size:35px;
+    color:#b97d69;
+}
+.subtitle{
+    margin:15px;
+    letter-spacing:4px;
+    font-size:13px;
+    color:#a66c5c;
+}
+.names{
+    font-size:60px;
+    color:#95584d;
+    margin:25px;
+    cursor:pointer;
+    transition:0.3s;
+}
+.amp{
+    font-size:35px;
+    color:#c58d79;
+}
+.divider{
+    width:120px;
+    height:2px;
+    background:#c99986;
+    margin:25px auto;
+}
+.message{
+    max-width:620px;
+    margin:20px auto;
+    line-height:1.8;
+    font-size:18px;
+}
+.details{
+    display:flex;
+    justify-content:center;
+    gap:70px;
+    margin:35px 0;
+}
+.detail h3{
+    color:#95584d;
+    margin-bottom:8px;
+}
+button{
+    padding:11px 22px;
+    margin:7px;
+    border:0;
+    border-radius:25px;
+    background:#95584d;
+    color:white;
+    cursor:pointer;
+    font-family:Georgia;
+}
+button:hover{
+    background:#704039;
+}
+#moreDetails{
+    display:none;
+    max-width:550px;
+    margin:20px auto;
+    padding:20px;
+    background:#f7e4dc;
+    border-radius:15px;
+    line-height:1.8;
+}
+#rings{
+    font-size:55px;
+    margin:25px auto;
+    position:relative;
+}
+#surprise{
+    display:none;
+    margin:20px auto;
+    padding:20px;
+    max-width:500px;
+    background:#f4ddd5;
+    border-radius:15px;
+    font-size:18px;
+}
+#rsvp{
+    display:none;
+    margin:20px auto;
+    padding:20px;
+    max-width:450px;
+    background:#f7e4dc;
+    border-radius:15px;
+}
+input{
+    padding:10px;
+    width:220px;
+    border:1px solid #c99986;
+    border-radius:8px;
+    margin:10px;
+}
+#reply{
+    margin-top:12px;
+    font-weight:bold;
+}
+.flower{
+    display:inline-block;
+    font-size:30px;
+    margin:10px;
+    cursor:pointer;
+}
+.footer{
+    margin-top:30px;
+    color:#a66c5c;
+    letter-spacing:2px;
+}
+</style>
+</head>
+<body>
+<div class="card">
+<div class="decor">
+❀ ❀ ❀
+</div>
+<p class="subtitle">
+TOGETHER WITH THEIR FAMILIES
+</p>
+<h2>
+REQUEST THE PLEASURE OF YOUR COMPANY
+</h2>
+<div class="divider"></div>
+<div class="names" id="coupleNames">
+Brielle
+<span class="amp">&</span>
+Robert
+</div>
+<p class="message">
+With hearts full of love and joy, we invite you
+to celebrate the beginning of our forever together.
+</p>
+<p style="font-size:14px;">
+Double-click our names for a little surprise ❤️
+</p>
+<div class="divider"></div>
+<div class="details">
+<div class="detail">
+<h3>DATE</h3>
+<p>20 December 2026</p>
+</div>
+<div class="detail">
+<h3>TIME</h3>
+<p>6:00 PM</p>
+</div>
+<div class="detail">
+<h3>VENUE</h3>
+<p>Rosewood Gardens</p>
+</div>
+</div>
+<button id="detailsBtn">
+View Wedding Details
+</button>
+<div id="moreDetails">
+<p>
+Join us for an evening filled with love,
+laughter, music and beautiful memories.
+</p>
+<p>
+Dinner and celebrations will follow the ceremony.
+</p>
+</div>
+<h2 style="margin-top:35px;">
+💍 A Little Love Story 💍
+</h2>
+<div id="rings">
+💍
+</div>
+<button id="animateBtn">
+Start Animation
+</button>
+<div style="margin-top:25px;">
+<span class="flower">🌸</span>
+<span class="flower">🌷</span>
+<span class="flower">🌸</span>
+<p>
+Hover over the flowers ✨
+</p>
+</div>
+<button id="surpriseBtn">
+Open Love Note
+</button>
+<div id="surprise">
+"Wherever life takes us, we will always
+choose each other." ❤️
+</div>
+<h2 style="margin-top:35px;">
+Kindly RSVP
+</h2>
+<button id="rsvpBtn">
+Open RSVP
+</button>
+<div id="rsvp">
+<p>
+We would love to celebrate with you!
+</p>
+<input
+type="text"
+id="guestName"
+placeholder="Enter your name">
+<br>
+<button id="submitBtn">
+Confirm Attendance
+</button>
+<div id="reply"></div>
+</div>
+<div class="divider"></div>
+<p class="footer">
+WITH LOVE • BRIELLE & ROBERT
+</p>
+<div class="decor" style="margin-top:20px;">
+❀ ❀ ❀
+</div>
+</div>
+<script>
+$(document).ready(function(){
+        $("#detailsBtn").click(function(){
+
+        $("#moreDetails").slideToggle(700);
+
+    });
+    $("#coupleNames").dblclick(function(){
+        $(this).css({
+            "color":"#c06c84",
+            "transform":"scale(1.1)"
+        });
+        $(this).html(
+            "Brielle <span class='amp'>&</span> Robert ❤️"
+        );
+    });
+    $("#animateBtn").click(function(){
+        $("#rings")
+        .animate({
+            left:"180px"
+        },1000)
+        .animate({
+            left:"-180px"
+        },1000)
+        .animate({
+            left:"0px"
+        },1000);
+
+    });
+    $(".flower").hover(
+        function(){
+            $(this).css({
+                "font-size":"45px",
+                "transform":"rotate(15deg)"
+            });
+
+        },
+        function(){
+
+            $(this).css({
+                "font-size":"30px",
+                "transform":"rotate(0deg)"
+            });
+
+        }
+
+    );
+    $("#surpriseBtn").click(function(){
+
+        $("#surprise").fadeToggle(1000);
+
+    });
+    $("#rsvpBtn").click(function(){
+
+        $("#rsvp").slideDown(700);
+
+    });
+    $("#submitBtn").click(function(){
+
+        let name=$("#guestName").val();
+
+        if(name==""){
+
+            $("#reply").html(
+                "Please enter your name ❤️"
+            );
+
+        }
+        else{
+
+            $("#reply").html(
+                "Thank you, "+name+
+                "! We can't wait to celebrate with you! 💕"
+            );
+
+        }
+
+    });
+    $("#detailsBtn").mouseenter(function(){
+
+        $(this).css({
+            "background-color":"#b87967",
+            "transform":"scale(1.05)"
+        });
+
+    });
+    $("#detailsBtn").mouseleave(function(){
+
+        $(this).css({
+            "background-color":"#95584d",
+            "transform":"scale(1)"
+        });
+
+    });
+});
+</script>
+</body>
+</html>
